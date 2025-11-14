@@ -17,26 +17,33 @@ token.
 for OAuth 2.0.
 
 1. The client generates a code verifier. This is simply a string of random
-   characters:
+   characters from the [RFC 7636][RFC 7636] allowed alphabet (`A-Z`, `a-z`,
+   `0-9`, `-._~`) with a length between 43 and 128 characters:
 
     ```
-    code_verifier = random_string(length=64, alphanumeric)
+    code_verifier = RANDOM_STRING(43-128 characters, alphabet="A-Za-z0-9-._~")
     ```
 
     **NOTE**: The code verifier never leaves the client until token exchange
-    (`POST /token`).
+    (`POST /token`). See [RFC 7636 Section 4.1][RFC 7636 Section 4.1] for
+    code verifier constraints.
 
-2. The client generates a code challenge. This is a hash of the code verifier:
+2. The client generates a code challenge. This is a hash of the code verifier
+   encoded using base64url *without* padding:
 
-    ```python
-    code_challenge = base64url(sha256(code_verifier))
+    ```
+    code_challenge = BASE64URL(SHA256(code_verifier))
     ```
 
-3. The user includes the code challenge in the authorization request
+    See: [Appendix A. Notes on Implementing Base64url Encoding without
+    Padding][Appendix A. Notes on Implementing Base64url Encoding without
+    Padding]
+
+3. The client includes the code challenge in the authorization request
    (`GET /authorize`):
 
    **NOTE**: OpenAI (and ChatGPT acting as the MCP client) only supports the
-   `S256` code challenge method). Therefore, the hash of the code verifier must
+   `S256` code challenge method. Therefore, the hash of the code verifier must
    use the SHA-256 hash function.
 
     ```
@@ -64,8 +71,8 @@ for OAuth 2.0.
    of the code verifier. If the hash of the code verifier matches the original
    code challenge, the authorization server issues the access token:
 
-    ```python
-    sha256(code_verifier) == code_challenge
+    ```
+    BASE64URL(SHA256(code_verifier)) == code_challenge
     ```
 
 ## Storage
@@ -79,3 +86,7 @@ SET auth:code:HXaz4hNg... '{"code_challenge":"eCe/nK...","client_id":"..."}' EX 
 ```
 
 This allows for fast, simple lookups with automatic expiration.
+
+[RFC 7636]: https://datatracker.ietf.org/doc/html/rfc7636
+[RFC 7636 Section 4.1]: https://datatracker.ietf.org/doc/html/rfc7636#section-4.1
+[Appendix A. Notes on Implementing Base64url Encoding without Padding]: https://datatracker.ietf.org/doc/html/rfc7636#appendix-A
