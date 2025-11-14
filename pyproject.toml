@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "mcp-authorization"
+version = "0.1.0"
+description = """A custom authorization implementation that conforms to the
+Model Context Protocol (MCP) authorization specification."""
+authors = ["Nickolas Kraus"]
+package-mode = false
+
+[tool.poetry.dependencies]
+python = ">=3.13,<4.0"
+fastapi = {extras = ["standard"], version = "*"}
+uvicorn = {extras = ["standard"], version = "*"}
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.14.3"
+
+[tool.ruff.lint]
+extend-select = ["I"]
+
+[build-system]
+requires = ["poetry-core>=1.5.0"]
+build-backend = "poetry.core.masonry.api"
