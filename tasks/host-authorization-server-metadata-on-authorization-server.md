@@ -30,7 +30,7 @@ This involves defining a metadata endpoint (`/.well-known/openid-configuration`)
 
 ## Acceptance Criteria
 
-* A metadata endpoint is defined in the Authorization Server ([Function-Health/member-app-middleware][Function-Health/member-app-middleware]), which returns the Authorization Server Metadata.
+* A metadata endpoint is defined in the authorization server ([Function-Health/member-app-middleware][Function-Health/member-app-middleware]), which returns the Authorization Server Metadata.
 
 ## Resources
 
