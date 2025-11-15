@@ -32,7 +32,7 @@ This involves defining a metadata endpoint (`/.well-known/oauth-protected-resour
 
 ## Acceptance Criteria
 
-* A metadata endpoint is defined in the MCP server ([Function-Health/ai-chat](https://github.com/Function-Health/ai-chat)), which returns the Protected Resource Metadata for the resource.
+* A metadata endpoint is defined in the MCP server ([Function-Health/ai-chat][Function-Health/ai-chat]), which returns the Protected Resource Metadata for the resource.
 * The MCP server returns a `401 Unauthorized` for unauthenticated requests that includes the `WWW-Authenticate` header.
 
 ```
@@ -48,3 +48,4 @@ WWW-Authenticate: Bearer resource_metadata="https://api.example.com/.well-known/
 * [Custom auth with OAuth 2.1](https://developers.openai.com/apps-sdk/build/auth#custom-auth-with-oauth-21)
 
 [RFC 9728]: https://datatracker.ietf.org/doc/html/rfc9728
+[Function-Health/ai-chat]: https://github.com/Function-Health/ai-chat)
