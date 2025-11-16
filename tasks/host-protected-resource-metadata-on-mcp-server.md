@@ -25,10 +25,13 @@ This involves defining a metadata endpoint (`/.well-known/oauth-protected-resour
 }
 ```
 
-* `resource` [REQUIRED]: The canonical identifier of the resource server.
+* `resource` [REQUIRED]: The canonical identifier of the resource server. ChatGPT sends this exact value as the resource query parameter during OAuth. **NOTE**: This needs to be added to the audience (`aud`) claim of the access token.
 * `authorization_servers` [REQUIRED]: Array of authorization server URLs that can issue tokens for this resource.
 * `scopes_supported` [OPTIONAL]: OAuth scopes your resource server recognizes. **NOTE**: These are TBD and are declared on the tool.
 * `resource_documentation` [OPTIONAL]: Link to documentation.
+
+A full list of available metadata is defined in [RFC 9728][RFC 9728]:
+- [Protected Resource Metadata][Protected Resource Metadata]
 
 ## Acceptance Criteria
 
@@ -48,4 +51,5 @@ WWW-Authenticate: Bearer resource_metadata="https://api.example.com/.well-known/
 * [Custom auth with OAuth 2.1](https://developers.openai.com/apps-sdk/build/auth#custom-auth-with-oauth-21)
 
 [RFC 9728]: https://datatracker.ietf.org/doc/html/rfc9728
-[Function-Health/ai-chat]: https://github.com/Function-Health/ai-chat)
+[Protected Resource Metadata]: https://datatracker.ietf.org/doc/html/rfc9728#name-protected-resource-metadata
+[Function-Health/ai-chat]: https://github.com/Function-Health/ai-chat
