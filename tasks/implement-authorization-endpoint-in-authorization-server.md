@@ -4,11 +4,11 @@
 
 The authorization endpoint (`/authorize`) handles the authorization request in the OAuth 2.1 authentication flow.
 
-After ChatGPT registers (`/register`) itself with the authorization server via Dynamic Client Registration (DCR), if the user invokes a tool that makes a request to a protected MCP server, the OAuth 2.1 flow is initiated. This begins with user authorization, in which the client makes a `GET` request to the authorization server's authorization endpoint (`/authorize`). Required information is added to the request's URL parameters (e.g., `client_id`, `code_challenge`, `code_challenge_method`), etc.). A full list of the request parameters can be found below.
+After ChatGPT registers (`/register`) itself with the authorization server via Dynamic Client Registration (DCR), if the user invokes a tool that makes a request to a protected MCP server, the OAuth 2.1 flow is initiated. This begins with user authorization, in which the client makes a `GET` request to the authorization server's authorization endpoint (`/authorize`). Required information is added to the request's URL parameters (e.g., `client_id`, `code_challenge`, `code_challenge_method`, `resource`). A full list of the request parameters can be found below.
 
 It should be noted that the `/authorize` endpoint does not actually authorize the user; it is simply an endpoint that facilitates the authorization step by performing request verification and returning the login prompt. Actual authorization is done using the authorization callback endpoint (`/authorize/callback`).
 
-**NOTE**: Additionally, the authorization endpoint is responsible for handling the authorization code flow with PKCE by passing the `code_challendge` to the user via an HTML form and subsequently to the authorization request callback endpoint.
+**NOTE**: Additionally, the authorization endpoint is responsible for handling the authorization code flow with PKCE by passing the `code_challenge` to the user via an HTML form and subsequently to the authorization request callback endpoint.
 
 **A note on redirection...**
 Redirection (via `redirect_uri`) in the OAuth flow is a little confusing. Recall that the OAuth authorization flow consists of a user, OAuth client, and authorization server. When the OAuth client initiates the authorization request, it makes a call to the authorization server's authorization endpoint (`/authorize`). This endpoint is responsible for returning the login page to the user. However, since the OAuth client needs to be *read-in* to the authorization flow without handling the user's credentials, the authorization server *redirects* the request from the user's browser back to the OAuth client after successful login. This is a key aspect of OAuth: a user authorizes with an entity (authorization server) that can in turn delegate authorization to another entity (OAuth client) without that entity (OAuth client) knowing the credentials of the user.
@@ -71,7 +71,7 @@ Returns HTML with a form element for user log in.
     * Validate code challenge and code challenge method (`code_challenge` and `code_challenge_method`).
     * Validate redirect URI (`redirect_uri`).
     * Validate resource (`resource`).
-    * Validate state (`resource`).
+    * Validate state (`state`).
 * The endpoint should return a `400` if any validation fails.
 
 [^1]: MCP clients and authorization servers create a secret verifier-challenge pair, ensuring that only the original requester can exchange an authorization code for tokens. See PKCE.
