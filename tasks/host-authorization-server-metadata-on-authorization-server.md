@@ -29,8 +29,10 @@ This involves defining a metadata endpoint (`/.well-known/openid-configuration`)
 * `code_challenge_methods_supported` [REQUIRED]: Must include `S256`, otherwise ChatGPT will refuse to proceed because PKCE appears unsupported.
 
 A full list of available metadata is defined in [RFC 8414][RFC 8414]/[OpenID Connect Discovery][OpenID Connect Discovery]:
-- [Authorization Server Metadata][Authorization Server Metadata]
-- [OpenID Provider Metadata][OpenID Provider Metadata]
+* [Authorization Server Metadata][Authorization Server Metadata]
+* [OpenID Provider Metadata][OpenID Provider Metadata]
+
+**NOTE**: We will most likely be using [OpenID Provider Metadata][OpenID Provider Metadata].
 
 ## Acceptance Criteria
 
