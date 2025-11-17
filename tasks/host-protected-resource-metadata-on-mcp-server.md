@@ -31,7 +31,7 @@ This involves defining a metadata endpoint (`/.well-known/oauth-protected-resour
 * `resource_documentation` [OPTIONAL]: Link to documentation.
 
 A full list of available metadata is defined in [RFC 9728][RFC 9728]:
-- [Protected Resource Metadata][Protected Resource Metadata]
+* [Protected Resource Metadata][Protected Resource Metadata]
 
 ## Acceptance Criteria
 
