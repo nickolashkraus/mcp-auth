@@ -31,7 +31,7 @@ ChatGPT, acting as the MCP client, performs the authorization code flow with PKC
     ```
     SET auth:code:HXaz4hNg... '{"code_challenge":"eCe/nK...","client_id":"..."}' EX 600
     ```
-* Update `/token` handling to:
+* Instrument the `/token` endpoint with PKCE validation:
   * Require a `code_verifier` parameter.
   * Look up the stored `code_challenge` for the provided authorization code.
   * Recompute `BASE64URL_NO_PADDING(SHA256(code_verifier))` and compare it to the stored challenge.
