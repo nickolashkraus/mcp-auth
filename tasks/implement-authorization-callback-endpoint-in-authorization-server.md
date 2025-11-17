@@ -21,12 +21,12 @@ The form request contains the following inputs:
   * `response_type`
   * `scope`
   * `state`
-At the very least, `state` is verified to prevent CSRF attacks. We may also want to confirm the *transaction* has not expired and ensure it still references the same `client_id`, `redirect_uri`, `code_challenge`, `resource`, `scopes`, etc.
+At the very least, `state` is verified to prevent CSRF attacks. We may also want to confirm the *transaction* has not expired and ensure it still references the same `client_id`, `redirect_uri`, `code_challenge`, `resource`, `scopes`, etc. The server should ignore the user-provided `redirect_uri` and instead use the value stored when `/authorize` created the transaction.
 
 **NOTE**: A possible implementation uses ephemeral storage to persist the authentication request transaction for a short amount of time.
 
 **3. Issuing the authorization code**
-Generates a single-use authorization code (`authorization_code`) tied to the authentication request flow transaction. The authorization code should be persisted (e.g., Redis/PostgreSQL) along with the client metadata (`client_id`, `redirect_uri`, `code_challenge`, `code_challenge_method`, `resource`, and `scopes`). The authorization code should have a short expiration (e.g., 5 minutes) and be marked as consumable once.
+Generates a single-use authorization code (`authorization_code`) tied to the authentication request flow transaction. The authorization code should be persisted (e.g., Redis/PostgreSQL) along with the client metadata (`client_id`, `redirect_uri`, `code_challenge`, `code_challenge_method`, `resource`, and `scopes`). The authorization code should have a short expiration (e.g., 5 minutes) and be marked as consumable once. Storing `resource` and `scopes` exactly as provided ensures `/token` can validate them and propagate them into the resulting access token.
 
 **4. Redirecting the user back to the client**
 The user's browser receives a redirection to the original redirect URI (ChatGPT) with the `code` and `state` (if provided) in the request URL parameters. If authentication fails, redirect with an OAuth error (`error=access_denied` or `error=login_required`). See [Error Handling][Error Handling].
