@@ -17,7 +17,7 @@ Redirection (via `redirect_uri`) in the OAuth flow is a little confusing. Recall
 * **URL**: The authorization endpoint is responsible for authorizing the user (e.g., via a login page). The URL of the endpoint is published to the authorization server's Authorization Server Metadata using the `authorization_endpoint` field. 
 
 **Parameters**
-* `client_id`: Unique identified for the client. The client ID is created during registration (DCR).
+* `client_id`: Unique identifier for the client. The client ID is created during registration (DCR).
 * `code_challenge`[^1]: SHA-256 hash of the client's `code_verifier`. Used for authorization code flow with PKCE.
 * `code_challenge_method`: Hashing function for client's `code_verifier`. Default: `S256`. **NOTE**: `S256` is required by ChatGPT.
 * `redirect_uri`: URI to redirect the user back to the client (ChatGPT). `USER → AS → USER → Client`.
@@ -72,8 +72,9 @@ Returns HTML with a form element for user log in.
     * Validate redirect URI (`redirect_uri`).
     * Validate resource (`resource`).
     * Validate state (`state`).
-* The endpoint should return a `400` if any validation fails.
+* The endpoint should return a `400` if any validation fails. See the [Error Handling][Error Handling] section of the MCP authorization spec.
 
 [^1]: MCP clients and authorization servers create a secret verifier-challenge pair, ensuring that only the original requester can exchange an authorization code for tokens. See PKCE.
 
 [RFC 8707]: https://www.rfc-editor.org/rfc/rfc8707.html
+[Error Handling]: https://modelcontextprotocol.io/specification/2025-06-18/basic/authorization#error-handling
