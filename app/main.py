@@ -14,7 +14,7 @@ def create_app() -> FastAPI:
         debug=settings.debug,
     )
 
-    app.include_router(router, prefix=settings.api_v1_prefix)
+    app.include_router(router, prefix=settings.prefix)
 
     @app.get("/")
     async def root():
