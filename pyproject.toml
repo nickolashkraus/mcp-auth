@@ -1,8 +1,7 @@
 [tool.poetry]
 name = "mcp-authorization"
 version = "0.1.0"
-description = """A custom authorization implementation that conforms to the
-Model Context Protocol (MCP) authorization specification."""
+description = "A custom authorization implementation that conforms to the Model Context Protocol (MCP) authorization specification."
 authors = ["Nickolas Kraus"]
 package-mode = false
 
@@ -13,6 +12,8 @@ uvicorn = {extras = ["standard"], version = "*"}
 
 [tool.poetry.group.dev.dependencies]
 ruff = "^0.14.3"
+pytest = "^9.0.1"
+pyright = "^1.1.407"
 
 [tool.ruff.lint]
 extend-select = ["I"]
