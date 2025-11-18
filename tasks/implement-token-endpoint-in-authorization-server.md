@@ -112,11 +112,11 @@ The access token used to make authenticated requests to the MCP server.
 **NOTE**: Use the `jwt.encode()` method of the [PyJWT][PyJWT] library to generate the ID and access tokens.
 
 **Error Codes**:
-- `invalid_request`: Malformed request
-- `invalid_client`: Client authentication failed
-- `invalid_grant`: Auth code invalid/expired/mismatched
-- `unauthorized_client`: Client not authorized for this grant type
-- `unsupported_grant_type`: Grant type not supported
+* `invalid_request`: Malformed request
+* `invalid_client`: Client authentication failed
+* `invalid_grant`: Auth code invalid/expired/mismatched
+* `unauthorized_client`: Client not authorized for this grant type
+* `unsupported_grant_type`: Grant type not supported
 
 See [RFC 6749 Section 5.2][RFC 6749 Section 5.2] for a full list of error response parameters.
 

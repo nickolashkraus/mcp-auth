@@ -48,9 +48,10 @@ In practice this comprises the following:
 
 ## Resources
 
-* [2.6 Access Token Usage](https://modelcontextprotocol.io/specification/2025-06-18/basic/authorization#access-token-usage)
+* [Access Token Usage][Access Token Usage]
 
 [OAuth 2.1 Section 5.2]: https://datatracker.ietf.org/doc/html/draft-ietf-oauth-v2-1-13#section-5.2
 [OAuth 2.1 Section 5.3]: https://datatracker.ietf.org/doc/html/draft-ietf-oauth-v2-1-13#section-5.3
 [RFC 8707 Section 2]: https://www.rfc-editor.org/rfc/rfc8707.html#section-2
 [Function-Health/ai-chat]: https://github.com/Function-Health/ai-chat
+[Access Token Usage]: https://modelcontextprotocol.io/specification/2025-06-18/basic/authorization#access-token-usage

@@ -39,8 +39,10 @@ ChatGPT, acting as the MCP client, performs the authorization code flow with PKC
 
 ## Resources
 
-* [3.4 Authorization Code Protection](https://modelcontextprotocol.io/specification/2025-06-18/basic/authorization#authorization-code-protection)
-* [Custom auth with OAuth 2.1](https://developers.openai.com/apps-sdk/build/auth#custom-auth-with-oauth-21)
+* [Authorization Code Protection][Authorization Code Protection]
+* [Custom Auth with OAuth 2.1][Custom Auth with OAuth 2.1]
 
 [OAuth 2.1 Section 7.5.2]: https://datatracker.ietf.org/doc/html/draft-ietf-oauth-v2-1-13#section-7.5.2
 [RFC 7636]: https://datatracker.ietf.org/doc/html/rfc7636
+[Authorization Code Protection]: https://modelcontextprotocol.io/specification/2025-06-18/basic/authorization#authorization-code-protection
+[Custom Auth with OAuth 2.1]: https://developers.openai.com/apps-sdk/build/auth#custom-auth-with-oauth-21

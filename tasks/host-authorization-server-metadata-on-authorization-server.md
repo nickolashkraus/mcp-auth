@@ -25,7 +25,7 @@ This involves defining a metadata endpoint (`/.well-known/openid-configuration`)
 ```
 
 * `authorization_endpoint`, `token_endpoint`, `jwks_uri` [REQUIRED]: The endpoints used by the client (ChatGPT) to execute the OAuth 2.1 (with PKCE) flow end-to-end.
-* `registration_endpoint` [REQUIRED]: Enables dynamic client registration (DCR), so ChatGPT can use a dedicated `client_id` per connector.
+* `registration_endpoint` [REQUIRED]: Enables Dynamic Client Registration (DCR), so ChatGPT can use a dedicated `client_id` per connector.
 * `code_challenge_methods_supported` [REQUIRED]: Must include `S256`, otherwise ChatGPT will refuse to proceed because PKCE appears unsupported.
 
 A full list of available metadata is defined in [RFC 8414][RFC 8414]/[OpenID Connect Discovery][OpenID Connect Discovery]:
@@ -40,11 +40,13 @@ A full list of available metadata is defined in [RFC 8414][RFC 8414]/[OpenID Con
 
 ## Resources
 
-* [2.3 Authorization Server Discovery](https://modelcontextprotocol.io/specification/2025-06-18/basic/authorization#authorization-server-discovery)
-* [Custom auth with OAuth 2.1](https://developers.openai.com/apps-sdk/build/auth#custom-auth-with-oauth-21)
+* [Authorization Server Discovery][Authorization Server Discovery]
+* [Custom Auth with OAuth 2.1][Custom Auth with OAuth 2.1]
 
 [RFC 8414]: https://datatracker.ietf.org/doc/html/rfc8414
 [OpenID Connect Discovery]: https://openid.net/specs/openid-connect-discovery-1_0.html
 [Authorization Server Metadata]: https://datatracker.ietf.org/doc/html/rfc8414#section-2
 [OpenID Provider Metadata]: https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata
 [Function-Health/member-app-middleware]: https://github.com/Function-Health/member-app-middleware
+[Authorization Server Discovery]: https://modelcontextprotocol.io/specification/2025-06-18/basic/authorization#authorization-server-discovery
+[Custom Auth with OAuth 2.1]: https://developers.openai.com/apps-sdk/build/auth#custom-auth-with-oauth-21

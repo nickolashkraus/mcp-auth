@@ -2,7 +2,7 @@
 
 ## Overview
 
-ChatGPT acting on behalf of the user supports dynamic client registration (DCR). [Dynamic Client Registration][Dynamic Client Registration] is part of the MCP authorization specification:
+ChatGPT acting on behalf of the user supports Dynamic Client Registration (DCR). [Dynamic Client Registration][Dynamic Client Registration] is part of the MCP authorization specification:
 
 > MCP clients and authorization servers **SHOULD** support the OAuth 2.0 Dynamic Client Registration Protocol [RFC 7591][RFC 7591] to allow MCP clients to obtain OAuth client IDs without user interaction.
 
@@ -77,9 +77,10 @@ Content-Type: application/json
 
 ## Resources
 
-* [2.4 Dynamic Client Registration](https://modelcontextprotocol.io/specification/2025-06-18/basic/authorization#dynamic-client-registration)
-* [Custom auth with OAuth 2.1](https://developers.openai.com/apps-sdk/build/auth#custom-auth-with-oauth-21)
+* [Model Context Protocol — Dynamic Client Registration][Dynamic Client Registration]
+* [Custom Auth with OAuth 2.1][Custom Auth with OAuth 2.1]
 
 [Dynamic Client Registration]: https://modelcontextprotocol.io/specification/2025-06-18/basic/authorization#dynamic-client-registration
 [RFC 7591]: https://datatracker.ietf.org/doc/html/rfc7591
 [Function-Health/member-app-middleware]: https://github.com/Function-Health/member-app-middleware
+[Custom Auth with OAuth 2.1]: https://developers.openai.com/apps-sdk/build/auth#custom-auth-with-oauth-21

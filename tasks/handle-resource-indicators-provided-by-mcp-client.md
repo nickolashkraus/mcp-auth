@@ -48,7 +48,9 @@ server.registerTool(
 
 ## Resources
 
-* [2.5.1 Resource Parameter Implementation](https://modelcontextprotocol.io/specification/2025-06-18/basic/authorization#resource-parameter-implementation)
-* [Custom auth with OAuth 2.1](https://developers.openai.com/apps-sdk/build/auth#custom-auth-with-oauth-21)
+* [Resource Parameter Implementation][Resource Parameter Implementation]
+* [Custom Auth with OAuth 2.1][Custom Auth with OAuth 2.1]
 
 [RFC 8707]: https://www.rfc-editor.org/rfc/rfc8707.html
+[Resource Parameter Implementation]: https://modelcontextprotocol.io/specification/2025-06-18/basic/authorization#resource-parameter-implementation
+[Custom Auth with OAuth 2.1]: https://developers.openai.com/apps-sdk/build/auth#custom-auth-with-oauth-21

@@ -6,7 +6,7 @@ To allow ChatGPT to discover how to authenticate, the resource (i.e., MCP server
 
 This involves defining a metadata endpoint (`/.well-known/oauth-protected-resource`), which returns a JSON document with information on the resource's associated authorization servers.
 
-**NOTE**: MCP servers **MUST** implement the OAuth 2.0 Protected Resource Metadata ([RFC 9728](https://datatracker.ietf.org/doc/html/rfc9728)) specification to indicate the locations of authorization servers.
+**NOTE**: MCP servers **MUST** implement the OAuth 2.0 Protected Resource Metadata ([RFC 9728][RFC 9728]) specification to indicate the locations of authorization servers.
 
 **Example**
 
@@ -47,9 +47,11 @@ WWW-Authenticate: Bearer resource_metadata="https://api.example.com/.well-known/
 
 ## Resources
 
-* [2.3 Authorization Server Discovery](https://modelcontextprotocol.io/specification/2025-06-18/basic/authorization#authorization-server-discovery)
-* [Custom auth with OAuth 2.1](https://developers.openai.com/apps-sdk/build/auth#custom-auth-with-oauth-21)
+* [Authorization Server Discovery][Authorization Server Discovery]
+* [Custom Auth with OAuth 2.1][Custom Auth with OAuth 2.1]
 
 [RFC 9728]: https://datatracker.ietf.org/doc/html/rfc9728
 [Protected Resource Metadata]: https://datatracker.ietf.org/doc/html/rfc9728#name-protected-resource-metadata
 [Function-Health/ai-chat]: https://github.com/Function-Health/ai-chat
+[Authorization Server Discovery]: https://modelcontextprotocol.io/specification/2025-06-18/basic/authorization#authorization-server-discovery
+[Custom Auth with OAuth 2.1]: https://developers.openai.com/apps-sdk/build/auth#custom-auth-with-oauth-21
