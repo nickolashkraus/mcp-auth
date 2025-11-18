@@ -8,14 +8,14 @@ features:
 
 ## Authorization Flow
 
-See [authorization-flow.md](docs/authorization-flow.md).
+See [authorization-flow.md](./authorization-flow.md).
 
 ## Dynamic Client Registration (DCR)
 
-See [dynamic-client-registration.md](docs/dynamic-client-registration.md).
+See [dynamic-client-registration.md](./dynamic-client-registration.md).
 
 ## Proof Key for Code Exchange (PKCE)
 
-See [proof-key-for-code-exchange.md](docs/proof-key-for-code-exchange.md).
+See [proof-key-for-code-exchange.md](./proof-key-for-code-exchange.md).
 
 [MCP authorization spec]: https://modelcontextprotocol.io/specification/2025-06-18/basic/authorization

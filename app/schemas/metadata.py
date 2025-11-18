@@ -43,7 +43,7 @@ class ProtectedResourceMetadata(BaseModel):
     )
 
     bearer_methods_supported: list[str] | None = Field(
-        default_factory=lambda: ["header"],
+        default=["header"],
         description=(
             "List of the supported methods of sending an OAuth 2.0 bearer token "
             "[RFC 6750] to the protected resource. Defined values are "
@@ -53,7 +53,7 @@ class ProtectedResourceMetadata(BaseModel):
     )
 
     resource_signing_alg_values_supported: list[str] | None = Field(
-        default_factory=lambda: ["RS256"],
+        default=["RS256"],
         description=(
             "JSON array containing a list of the JWS [JWS] signing algorithms "
             "(alg values) [JWA] supported by the protected resource for signing "

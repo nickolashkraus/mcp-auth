@@ -5,7 +5,7 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class ProtectedResourceMetadataConfig(BaseModel):
-    """OAuth 2.0 Protected Resource Metadata config."""
+    """OAuth 2.0 Protected Resource Metadata configuration."""
 
     resource: HttpUrl
     authorization_servers: list[str] | None = None
@@ -28,10 +28,10 @@ class Settings(BaseSettings):
     app_name: str = "MCP Authorization"
     debug: bool = False
     prefix: str = ""
-    protected_resource_metadata: ProtectedResourceMetadataConfig | None = None
+    protected_resource_metadata: ProtectedResourceMetadataConfig
 
 
-settings = Settings()
+settings = Settings()  # type: ignore[call-arg]
 
 
 def get_settings() -> Settings:
