@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "mcp-authorization"
+name = "mcp-auth"
 version = "0.1.0"
 description = "A custom authorization implementation that conforms to the Model Context Protocol (MCP) authorization specification."
 authors = ["Nickolas Kraus"]

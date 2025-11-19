@@ -1,4 +1,4 @@
-# mcp-authorization
+# mcp-auth
 
 A custom authorization implementation that conforms to the [Model Context
 Protocol (MCP) authorization specification][MCP authorization spec].
