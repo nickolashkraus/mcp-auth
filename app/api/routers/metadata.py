@@ -25,9 +25,8 @@ AUTHORIZATION_SERVER_METADATA_URI = "/.well-known/openid-configuration"
 async def protected_resource_metadata(
     settings: config.Settings = Depends(config.get_settings),
 ) -> JSONResponse:
-    """
-    MCP servers MUST implement OAuth 2.0 Protected Resource Metadata (RFC 9728).
-    MCP clients MUST use OAuth 2.0 Protected Resource Metadata for
+    """MCP servers MUST implement OAuth 2.0 Protected Resource Metadata (RFC
+    9728).  MCP clients MUST use OAuth 2.0 Protected Resource Metadata for
     authorization server discovery.
 
     See: https://modelcontextprotocol.io/specification/2025-06-18/basic/authorization#authorization-server-location
@@ -41,14 +40,13 @@ async def protected_resource_metadata(
             resource_signing_alg_values_supported=settings.protected_resource_metadata.resource_signing_alg_values_supported,
             resource_name=settings.protected_resource_metadata.resource_name,
             resource_documentation=settings.protected_resource_metadata.resource_documentation,
-        ).model_dump(mode="json")
+        ).model_dump(mode="json"),
     )
 
 
 @router.get(AUTHORIZATION_SERVER_METADATA_URI)
 async def authorization_server_metadata() -> JSONResponse:
-    """
-    Authorization servers MUST provide OAuth 2.0 Authorization Server Metadata
+    """Authorization servers MUST provide OAuth 2.0 Authorization Server Metadata
     (RFC 8414). MCP clients MUST use the OAuth 2.0 Authorization Server
     Metadata.
 

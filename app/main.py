@@ -9,7 +9,6 @@ from app.core.config import settings
 
 def create_app() -> FastAPI:
     """Create FastAPI application."""
-
     app = FastAPI(
         title=settings.app_name,
         debug=settings.debug,

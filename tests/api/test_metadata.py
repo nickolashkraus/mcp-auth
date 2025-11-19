@@ -3,7 +3,7 @@
 from fastapi.testclient import TestClient
 
 
-def test_protected_resource_metadata(client: TestClient):
+def test_protected_resource_metadata(client: TestClient) -> None:
     """Test protected resource metadata endpoint returns expected data."""
     response = client.get("/.well-known/oauth-protected-resource")
     assert response.status_code == 200
