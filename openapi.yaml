@@ -1,0 +1,171 @@
+components:
+  schemas:
+    AuthorizationServerMetadata:
+      description: OAuth 2.0 Authorization Server Metadata (RFC 8414).
+      properties: {}
+      title: AuthorizationServerMetadata
+      type: object
+    HealthStatus:
+      description: Response model for the health check endpoint.
+      properties:
+        status:
+          title: Status
+          type: string
+      required:
+        - status
+      title: HealthStatus
+      type: object
+    ProtectedResourceMetadata:
+      description: 'OAuth 2.0 Protected Resource Metadata (RFC 9728).
+
+        This model represents the metadata for a protected resource as specified
+        in RFC 9728 Section 2 (Protected Resource Metadata). It contains only the
+        metadata necessary to facilitate the MCP authorization spec.
+
+        See: https://datatracker.ietf.org/doc/html/rfc9728#name-protected-resource-metadata'
+      properties:
+        authorization_servers:
+          anyOf:
+            - items:
+                type: string
+              type: array
+            - type: 'null'
+          description: List of OAuth authorization server issuer identifiers, as defined
+            in RFC 8414, for authorization servers that can be used with this protected
+            resource.
+          title: Authorization Servers
+        bearer_methods_supported:
+          anyOf:
+            - items:
+                type: string
+              type: array
+            - type: 'null'
+          default:
+            - header
+          description: List of the supported methods of sending an OAuth 2.0 bearer
+            token [RFC 6750] to the protected resource. Defined values are ['header',
+            'body', 'query'], corresponding to Sections 2.1, 2.2, and 2.3 of [RFC
+            6750].
+          title: Bearer Methods Supported
+        resource:
+          description: The protected resource's resource identifier, as defined in
+            Section 1.2 of RFC 9728.
+          format: uri
+          maxLength: 2083
+          minLength: 1
+          title: Resource
+          type: string
+        resource_documentation:
+          anyOf:
+            - format: uri
+              maxLength: 2083
+              minLength: 1
+              type: string
+            - type: 'null'
+          description: URL of a page containing human-readable information that developers
+            might want or need to know when using the protected resource.
+          title: Resource Documentation
+        resource_name:
+          anyOf:
+            - type: string
+            - type: 'null'
+          description: Human-readable name of the protected resource intended for
+            display to the end user.
+          title: Resource Name
+        resource_signing_alg_values_supported:
+          anyOf:
+            - items:
+                type: string
+              type: array
+            - type: 'null'
+          default:
+            - RS256
+          description: JSON array containing a list of the JWS [JWS] signing algorithms
+            (alg values) [JWA] supported by the protected resource for signing resource
+            responses.
+          title: Resource Signing Alg Values Supported
+        scopes_supported:
+          anyOf:
+            - items:
+                type: string
+              type: array
+            - type: 'null'
+          description: List of scope values, as defined in OAuth 2.0 [RFC 6749], that
+            are used in authorization requests to request access to this protected
+            resource.
+          title: Scopes Supported
+      required:
+        - resource
+      title: ProtectedResourceMetadata
+      type: object
+    RootMessage:
+      description: Response model for the root endpoint.
+      properties:
+        message:
+          title: Message
+          type: string
+      required:
+        - message
+      title: RootMessage
+      type: object
+info:
+  title: MCP Authorization
+  version: 0.1.0
+openapi: 3.1.0
+paths:
+  /:
+    get:
+      description: Root endpoint.
+      operationId: root__get
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RootMessage'
+          description: Successful Response
+      summary: Root
+  /.well-known/oauth-protected-resource:
+    get:
+      description: 'Returns the OAuth 2.0 Protected Resource Metadata (RFC 9728).
+        See: https://datatracker.ietf.org/doc/html/rfc9728'
+      operationId: protected_resource_metadata__well_known_oauth_protected_resource_get
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProtectedResourceMetadata'
+          description: Successful Response
+      summary: Protected Resource Metadata
+      tags:
+        - metadata
+  /.well-known/openid-configuration:
+    get:
+      description: 'Returns the OAuth 2.0 Authorization Server Metadata (RFC 8414).
+        See: https://datatracker.ietf.org/doc/html/rfc8414'
+      operationId: authorization_server_metadata__well_known_openid_configuration_get
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthorizationServerMetadata'
+          description: Successful Response
+      summary: Authorization Server Metadata
+      tags:
+        - metadata
+  /health:
+    get:
+      description: Return health check status.
+      operationId: health_health_get
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthStatus'
+          description: Successful Response
+      summary: Health
+      tags:
+        - health

@@ -1,10 +1,10 @@
 """Application entrypoint."""
 
 from fastapi import FastAPI
-from fastapi.responses import JSONResponse
 
 from app.api.routers import router
 from app.core.config import settings
+from app.schemas import root as root_schemas
 
 
 def create_app() -> FastAPI:
@@ -16,10 +16,10 @@ def create_app() -> FastAPI:
 
     app.include_router(router, prefix=settings.prefix)
 
-    @app.get("/")
-    async def root() -> JSONResponse:
+    @app.get("/", response_model=root_schemas.RootResponse)
+    async def root() -> root_schemas.RootResponse:
         """Root endpoint."""
-        return JSONResponse(content={"message": "Hello, World!"})
+        return root_schemas.RootResponse(message="Hello, World!")
 
     return app
 

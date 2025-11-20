@@ -77,3 +77,9 @@ class ProtectedResourceMetadata(BaseModel):
             "resource."
         ),
     )
+
+
+class AuthorizationServerMetadata(BaseModel):
+    """OAuth 2.0 Authorization Server Metadata (RFC 8414)."""
+
+    pass
