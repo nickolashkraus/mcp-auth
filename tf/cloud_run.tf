@@ -37,7 +37,8 @@ resource "google_cloud_run_v2_service_iam_binding" "app" {
   name = google_cloud_run_v2_service.app.name
   role = "roles/run.invoker"
 
-  # NOTE: "allUsers" is a special identifier that represents anyone who is on
-  # the internet; with or without a Google account.
-  members = ["allUsers"]
+  # Only allow requests from API Gateway.
+  members = [
+    "serviceAccount:service-${data.google_project.project.number}@gcp-sa-apigateway.iam.gserviceaccount.com",
+  ]
 }
