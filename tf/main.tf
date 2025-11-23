@@ -23,4 +23,5 @@ provider "google-beta" {
   region  = var.region
 }
 
-data "google_project" "project" {}
+# Uncomment to retrieve information about the current Google Cloud project.
+# data "google_project" "project" {}
