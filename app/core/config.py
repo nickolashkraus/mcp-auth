@@ -1,7 +1,15 @@
 """Application settings."""
 
-from pydantic import BaseModel, HttpUrl
+from pydantic import BaseModel, HttpUrl, SecretStr
 from pydantic_settings import BaseSettings, SettingsConfigDict
+
+
+class Auth0Config(BaseModel):
+    """Auth0 configuration."""
+
+    domain: str | None = None
+    client_id: str | None = None
+    client_secret: SecretStr | None = None
 
 
 class ProtectedResourceMetadataConfig(BaseModel):
@@ -28,7 +36,11 @@ class Settings(BaseSettings):
     app_name: str = "MCP Authorization"
     debug: bool = False
     prefix: str = ""
+
+    auth0: Auth0Config
     protected_resource_metadata: ProtectedResourceMetadataConfig
+
+    mcp_app_name: str = "MCP Server"
 
 
 settings = Settings()  # type: ignore[call-arg]
