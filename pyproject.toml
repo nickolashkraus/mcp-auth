@@ -10,6 +10,7 @@ python = ">=3.13,<4.0"
 fastapi = {extras = ["standard"], version = "*"}
 uvicorn = {extras = ["standard"], version = "*"}
 pydantic-settings = "^2.12.0"
+authlib = "^1.6.5"
 
 [tool.poetry.group.dev.dependencies]
 ruff = "^0.14.3"
