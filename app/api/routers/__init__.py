@@ -6,7 +6,7 @@ from app.api.routers import health, metadata
 
 router = APIRouter()
 
-router.include_router(health.router, tags=["health"])
-router.include_router(metadata.router, tags=["metadata"])
+router.include_router(health.router)
+router.include_router(metadata.router)
 
 __all__ = ["router"]

@@ -14,7 +14,7 @@ from fastapi import APIRouter, Depends
 from app.core import config
 from app.schemas import metadata as metadata_schemas
 
-router = APIRouter()
+router = APIRouter(tags=["metadata"])
 
 PROTECTED_RESOURCE_METADATA_URI = "/.well-known/oauth-protected-resource"
 AUTHORIZATION_SERVER_METADATA_URI = "/.well-known/openid-configuration"
