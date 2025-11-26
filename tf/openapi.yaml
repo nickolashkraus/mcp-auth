@@ -8,7 +8,7 @@
 #   - https://docs.cloud.google.com/api-gateway/docs/oasv3-extensions
 openapi: 3.0.4
 info:
-  title: MCP Authorization
+  title: MCP Auth
   description: API for MCP Auth
   version: 0.1.0
 x-google-api-management:
