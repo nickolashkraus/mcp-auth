@@ -16,7 +16,7 @@ class ProtectedResourceMetadata(BaseModel):
     See: https://datatracker.ietf.org/doc/html/rfc9728#name-protected-resource-metadata
     """
 
-    resource: HttpUrl = Field(
+    resource: str = Field(
         ...,
         description=(
             "The protected resource's resource identifier, as defined in "

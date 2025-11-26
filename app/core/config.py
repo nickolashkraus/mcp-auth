@@ -15,7 +15,7 @@ class Auth0Config(BaseModel):
 class ProtectedResourceMetadataConfig(BaseModel):
     """OAuth 2.0 Protected Resource Metadata configuration."""
 
-    resource: HttpUrl
+    resource: str
     authorization_servers: list[str] | None = None
     scopes_supported: list[str] | None = None
     bearer_methods_supported: list[str] | None = None
@@ -33,7 +33,7 @@ class Settings(BaseSettings):
         env_nested_delimiter="__",
     )
 
-    app_name: str = "MCP Authorization"
+    app_name: str = "MCP Auth"
     debug: bool = False
     prefix: str = ""
 
