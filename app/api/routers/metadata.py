@@ -9,7 +9,10 @@ See:
   * https://datatracker.ietf.org/doc/html/rfc8414
 """
 
+import http
+
 from fastapi import APIRouter, Depends
+from fastapi.responses import Response
 
 from app.core import config
 from app.schemas import metadata as metadata_schemas
@@ -17,14 +20,28 @@ from app.schemas import metadata as metadata_schemas
 router = APIRouter(tags=["metadata"])
 
 PROTECTED_RESOURCE_METADATA_URI = "/.well-known/oauth-protected-resource"
-AUTHORIZATION_SERVER_METADATA_URI = "/.well-known/openid-configuration"
+AUTHORIZATION_SERVER_METADATA_URI = "/.well-known/oauth-authorization-server"
+
+
+@router.options(PROTECTED_RESOURCE_METADATA_URI, include_in_schema=False)
+async def protected_resource_metadata_options() -> Response:
+    """Handle OPTIONS for Protected Resource Metadata endpoint."""
+    return Response(
+        status_code=http.HTTPStatus.NO_CONTENT,
+        headers={
+            "Allow": ", ".join(
+                method.value
+                for method in (http.HTTPMethod.GET, http.HTTPMethod.OPTIONS)
+            ),
+        },
+    )
 
 
 @router.get(
     PROTECTED_RESOURCE_METADATA_URI,
     response_model=metadata_schemas.ProtectedResourceMetadata,
 )
-async def protected_resource_metadata(
+async def protected_resource_metadata_get(
     settings: config.Settings = Depends(config.get_settings),
 ) -> metadata_schemas.ProtectedResourceMetadata:
     """Returns the OAuth 2.0 Protected Resource Metadata (RFC 9728).
